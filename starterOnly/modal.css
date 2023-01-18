@@ -40,7 +40,7 @@ img {
 .main-navbar {
     float: right;
 }
-.topnav a {
+.topnav a{
   float: left;
   display: block;
   color: #000000;
@@ -68,16 +68,22 @@ img {
   display: none;
 }
 
-@media screen and (max-width: 768px) {
-  .topnav a {display: none;}
-  .topnav a.icon {
-    float: right;
-    display: block;
-  }
-}
 
 @media screen and (max-width: 768px) {
-  .topnav.responsive {position: relative;}
+  .topnav a {
+    display: none;
+  }
+  .topnav .icon {
+    float: right;
+    display: block;
+    padding: 12px 12px;
+    margin: 5px;
+    text-decoration: none;
+    font-size: 20px;
+  }
+  .topnav.responsive {
+    position: relative;
+  }
   .topnav.responsive .icon {
     position: absolute;
     right: 0;
@@ -94,7 +100,7 @@ img {
 
  @media screen and (max-width: 540px) {
   .topnav a {display: none;}
-  .topnav a.icon {
+  .topnav .icon {
     float: right;
     display: block;
     margin-top: -15px;
@@ -405,7 +411,7 @@ input[data-error]::after {
   font-size: 16px;
 }
 .hero-section {
-  min-height: 93vh;
+  /* min-height: 93vh;*/
   border-radius: 10px;
   display: grid;
   grid-template-columns: repeat(12, 1fr);
