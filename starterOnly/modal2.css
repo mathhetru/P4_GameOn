@@ -32,16 +32,14 @@ p {
   margin: 3.5%;
 }
 .header-logo {
-  float: left;
+    float: left;
 }
 .main-navbar {
-  height:55px;
-  float: right;
+    float: right;
 }
 
 /*topnav*/
 .topnav a{
-  font-weight: 500;
   float: left;
   display: block;
   color: #000000;
@@ -82,6 +80,7 @@ p {
   display: none;
 }
 
+
 main {
   font-size: 130%;
   font-weight: bolder;
@@ -107,6 +106,11 @@ main {
 .modal-btn:hover {
   background: #3876ac;
 }
+.footer {
+  margin: 20px;
+  padding: 10px;
+  font-family: var(--font-slab);
+}
 
 /* Modal form */
 .button {
@@ -124,18 +128,7 @@ main {
 .smFont {
   font-size: 16px;
 }
-.bground{
-  display: none;
-  position: fixed;
-  z-index: 1;
-  left: 0;
-  top: 0;
-  height: 100%;
-  width: 100%;
-  overflow: auto;
-  background-color: rgba(26, 39, 156, 0.4);
-}
-.bground-thanks {
+.bground {
   display: none;
   position: fixed;
   z-index: 1;
@@ -147,7 +140,7 @@ main {
   background-color: rgba(26, 39, 156, 0.4);
 }
 .content {
-  margin: 10% auto;
+  margin: 5% auto;
   width: 100%;
   max-width: 500px;
   animation-name: modalopen;
@@ -271,14 +264,6 @@ input[data-error]::after {
   left: 21%;
   top: 19%;
 }
-.text-thanks{
-  padding-top:250px;
-  font-size: 30px;
-  line-height: 40px;
-  width: 100%;
-  height: 612px;
-  text-align: center;
-}
 .close {
   position: absolute;
   right: 15px;
@@ -384,10 +369,10 @@ input[data-error]::after {
 /* custom select end */
 .text-label {
   font-weight: normal;
-  font-size: 14px;
+  font-size: 16px;
 }
 .hero-section {
-  /* min-height: 93vh;*/
+  /* min-height: 93vh; */
   border-radius: 10px;
   display: grid;
   grid-template-columns: repeat(12, 1fr);
@@ -402,9 +387,9 @@ input[data-error]::after {
   color: #fff;
   position: relative;
   text-align: left;
-  min-width: 510px;
+  min-width: 424px;
 }
-/* .hero-content::after {
+.hero-content::after {
   content: "";
   width: 100%;
   height: 100%;
@@ -412,7 +397,7 @@ input[data-error]::after {
   position: absolute;
   right: -80px;
   top: 0;
-} */
+}
 .hero-content > * {
   position: relative;
   z-index: 1;
@@ -423,7 +408,7 @@ input[data-error]::after {
   white-space: nowrap;
 }
 .hero-text {
-  /* width: 146%; */
+  width: 146%;
   font-weight: normal;
   margin-top: 57px;
   padding: 0;
@@ -440,9 +425,9 @@ input[data-error]::after {
   grid-column: span 8;
 }
 .hero-img img {
+  object-fit: cover;
   width: 100%;
   height: 100%;
-  object-fit: cover;
   display: block;
   padding: 0;
 }
@@ -457,50 +442,32 @@ input[data-error]::after {
   display: none;
 }
 footer {
+  padding-left: 2vw;
+  padding-right: 2vw;
   margin: 0 20px;
 }
 
-/* MOBILE */
+/* MOBILE */ 
 @media screen and (max-width: 540px) {
-  .header-logo > img{
-    width: 103px;
-    padding-top: 20px;
-    padding-left: 15px;
-    padding-right:0;
-  }
-  .topnav a {
-    display: none;
-  }
-  .topnav .icon {
+  .topnav a {display: none;}
+  .topnav a.icon {
+    font-size: 1.3rem;
     float: right;
     display: block;
     margin-top: -15px;
+    color: #fe142f;
   }
 } 
 
-@media screen and (max-width: 800px) {
-  .main-navbar{
-    height: 100%;
-    padding-top: 50px;
-  }
-  .content {
-    margin: 20% auto;
-  }
+@media screen and (max-width: 768px) {
   .topnav a {
     display: none;
   }
-  .topnav .icon {
-    color:#fe142f;
+  .topnav a.icon {
     float: right;
     display: block;
-    padding: 12px 12px;
-    margin: 5px;
-    text-decoration: none;
-    font-size: 20px;
   }
-  .topnav.responsive {
-    position: relative;
-  }
+  .topnav.responsive {position: relative;}
   .topnav.responsive .icon {
     position: absolute;
     right: 0;
@@ -511,25 +478,34 @@ footer {
     display: block;
     text-align: left;
   }
+}
+
+@media screen and (max-width: 800px) {
+  .header-logo > img {
+    width:50%;
+  }
   .hero-section {
     display: block;
     box-shadow: unset;
   }
   .hero-content {
-    min-width: 100%;
     background: #fff;
     color: #000;
-    padding: 0px;
+    padding: 20px;
+  }
+  .hero-content::after {
+    content: unset;
   }
   .hero-content .btn-signup {
     display: none;
   }
   .hero-headline {
-    font-size: 2.7rem;
+    font-size: 4.5rem;
     white-space: normal;
   }
   .hero-text {
-    font-size: 0.9rem;
+    width: unset;
+    font-size: 1.5rem;
   }
   .hero-img img {
     border-radius: 10px;
