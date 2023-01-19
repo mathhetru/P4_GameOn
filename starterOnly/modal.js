@@ -36,3 +36,15 @@ closeThanks.forEach((btn) => btn.addEventListener("click", closeModal));
 function closeModal() {
   modalBgThx.style.display = "none";
 };
+
+
+//Validation formulaire 
+const form = document.getElementById("form");
+
+// REGEX
+const nameRegExp = new RegExp("^[A-zÀ-ú \-]+$");
+const emailRegExp = new RegExp("^[a-zA-Z0-9_. -]+@[a-zA-Z.-]+[.]{1}[a-z]{2,10}$");
+
+const inputTest = document.getElementById("first");
+console.log(first.dataset.error);
+

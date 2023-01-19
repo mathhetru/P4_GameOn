@@ -53,11 +53,11 @@
       <div class="content">
         <span class="close"></span>
         <div class="modal-body">
-          <form name="reserve" action="index.html" method="get" onsubmit="return validate();">
-            <div class="formData">
+          <!-- <form id="form" name="reserve" action="index.html" method="get" onsubmit="return validate();"> -->
+          <form id="form" name="reserve" action="index.html" method="get">
+            <div class="formData" data-error-visible="false" data-error="Veuillez entrer 2 caractères ou plus pour le champ du nom.">
               <label class="text-label" for="first">Prénom</label>
-              <input class="text-control" type="text" id="first" name="first" minlength="2">
-              <!-- <span class="firstNameErrorMsg">Champ invalide, veuillez vérifier votre prénom.</span> -->
+              <input class="text-control" type="text" id="first" name="first" minlength="2"  >
             </div>
             <div class="formData">
               <label class="text-label" for="last">Nom</label><br>
@@ -104,7 +104,7 @@
             </div>
 
             <div class="formData">
-              <input class="checkbox-input" type="checkbox" id="checkbox1" checked>
+              <input class="checkbox-input" type="checkbox" id="checkbox1" checked required>
               <label class="checkbox2-label" for="checkbox1">
                 <span class="checkbox-icon"></span>
                 J'ai lu et accepté les conditions d'utilisation.
