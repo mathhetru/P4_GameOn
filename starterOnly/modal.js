@@ -8,7 +8,7 @@ editNavElement.addEventListener("click", function(){
   } else {
     topNav.className = "topnav";
   }
-})
+});
 
 // DOM Elements
 const modalBg = document.querySelector(".bground");
@@ -20,7 +20,7 @@ const formData = document.querySelectorAll(".formData");
 modalBtn.forEach((btn) => btn.addEventListener("click", launchModal));
 function launchModal() {
   modalBg.style.display = "block";
-}
+};
 
 // Fermer formulaire via croix
 const closeForm = document.querySelector(".close");
@@ -35,4 +35,4 @@ const closeThanks = document.querySelectorAll(".closeThanks");
 closeThanks.forEach((btn) => btn.addEventListener("click", closeModal));
 function closeModal() {
   modalBgThx.style.display = "none";
-}
+};
