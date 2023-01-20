@@ -41,10 +41,63 @@ function closeModal() {
 //Validation formulaire 
 const form = document.getElementById("form");
 
+// Empecher le submit automatique
+form.addEventListener("submit", function(e) {
+  e.preventDefault();
+});
+
 // REGEX
 const nameRegExp = new RegExp("^[A-zÀ-ú \-]+$");
 const emailRegExp = new RegExp("^[a-zA-Z0-9_. -]+@[a-zA-Z.-]+[.]{1}[a-z]{2,10}$");
 
-const inputTest = document.getElementById("first");
-console.log(first.dataset.error);
+// DOM des inputs du formulaire
+const inputFirst = document.querySelector(".first");
+const inputLast = document.querySelector(".last");
+const inputEmail = document.querySelector(".email");
+const inputBirthdate = document.querySelector(".birthdate");
+const inputQuantity = document.querySelector(".quantity");
+const inputLocation = document.querySelector(".location");
+const inputCondition = document.querySelector(".condition");
 
+// Tests des regex dans les inputs (si true : afficher errors)
+// Prénom
+form.first.addEventListener('change', function(e) {
+  const value = e.target.value;
+  const valueLength = e.target.value.length;
+  if (nameRegExp.test(value) && valueLength >= 2){
+    inputFirst.dataset.errorVisible = "false";
+  } else {
+    inputFirst.dataset.errorVisible = "true";
+  }
+});
+
+// Nom
+form.last.addEventListener('change', function(e) {
+  const value = e.target.value;
+  const valueLength = e.target.value.length;
+  if (nameRegExp.test(value) && valueLength >= 2){
+    inputLast.dataset.errorVisible = "false";
+  } else {
+    inputLast.dataset.errorVisible = "true";
+  }
+});
+
+//email
+form.email.addEventListener('change', function(e) {
+  const value = e.target.value;
+  const valueLength = e.target.value.length;
+  if (emailRegExp.test(value) && valueLength >= 2){
+    inputLast.dataset.errorVisible = "false";
+  } else {
+    inputLast.dataset.errorVisible = "true";
+  }
+});
+
+//date de naissance
+form.birthdate.addEventListener('change', function(e) {
+  const value = e.target.value;
+  console.log(e);
+  if (value == "yyyy-mm-dd") {
+    inputLast.dataset.errorVisible = "false";
+  }
+});
