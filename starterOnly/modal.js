@@ -16,20 +16,19 @@ const modalBgThx = document.querySelector(".bground-thanks");
 const modalBtn = document.querySelectorAll(".modal-btn");
 const formData = document.querySelectorAll(".formData");
 
-// Ouvrir formulaire (via plusieurs btn)
+// Open form (with several button)
 modalBtn.forEach((btn) => btn.addEventListener("click", launchModal));
 function launchModal() {
   modalBg.style.display = "block";
 };
 
-// Fermer formulaire via croix
+// Close form with cross
 const closeForm = document.querySelector(".close");
-
 closeForm.addEventListener("click", function() {
 	modalBg.style.display = "none";
 });
 
-// Fermer fenetre thanks via croix et bouton "fermer"
+// Close thanks window with cross and button "close"
 const closeThanks = document.querySelectorAll(".closeThanks");
 
 closeThanks.forEach((btn) => btn.addEventListener("click", closeModal));
@@ -38,7 +37,7 @@ function closeModal() {
 };
 
 
-//Validation formulaire 
+// Form validation
 const form = document.getElementById("form");
 
 // Empecher le submit automatique
@@ -49,6 +48,7 @@ form.addEventListener("submit", function(e) {
 // REGEX
 const nameRegExp = new RegExp("^[A-zÀ-ú \-]+$");
 const emailRegExp = new RegExp("^[a-zA-Z0-9_. -]+@[a-zA-Z.-]+[.]{1}[a-z]{2,10}$");
+const birthdateRegExp = new RegExp("^[0-9]{4}-[0-9]{2}-[0-9]{2}$");
 
 // DOM des inputs du formulaire
 const inputFirst = document.querySelector(".first");
@@ -59,39 +59,23 @@ const inputQuantity = document.querySelector(".quantity");
 const inputLocation = document.querySelector(".location");
 const inputCondition = document.querySelector(".condition");
 
-// Tests des regex dans les inputs (si true : afficher errors)
-// Prénom
-form.first.addEventListener('change', function(e) {
-  const value = e.target.value;
-  const valueLength = e.target.value.length;
-  if (nameRegExp.test(value) && valueLength >= 2){
-    inputFirst.dataset.errorVisible = "false";
-  } else {
-    inputFirst.dataset.errorVisible = "true";
-  }
-});
+// FUNCTION TEST DU REGEX SUR L'INPUT
+function testRegexOnInput(elem, regex, input) {
+  elem.addEventListener('change', function(e) {
+    const value = e.target.value;
+    const valueLength = e.target.value.length;
+    if (regex.test(value) && valueLength >= 2){
+      input.dataset.errorVisible = "false";
+    } else {
+      input.dataset.errorVisible = "true";
+    }
+  });
+}
 
-// Nom
-form.last.addEventListener('change', function(e) {
-  const value = e.target.value;
-  const valueLength = e.target.value.length;
-  if (nameRegExp.test(value) && valueLength >= 2){
-    inputLast.dataset.errorVisible = "false";
-  } else {
-    inputLast.dataset.errorVisible = "true";
-  }
-});
-
-//email
-form.email.addEventListener('change', function(e) {
-  const value = e.target.value;
-  const valueLength = e.target.value.length;
-  if (emailRegExp.test(value) && valueLength >= 2){
-    inputLast.dataset.errorVisible = "false";
-  } else {
-    inputLast.dataset.errorVisible = "true";
-  }
-});
+// Prénom, nom, email
+testRegexOnInput(form.first, nameRegExp, inputFirst); 
+testRegexOnInput(form.last, nameRegExp, inputLast);
+testRegexOnInput(form.email, emailRegExp, inputEmail);
 
 //date de naissance
 form.birthdate.addEventListener('change', function(e) {
