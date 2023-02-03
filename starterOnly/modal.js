@@ -31,7 +31,6 @@ closeForm.addEventListener("click", function () {
 
 // Close thanks window with cross and button "close"
 const closeThanks = document.querySelectorAll(".closeThanks");
-
 closeThanks.forEach((btn) => btn.addEventListener("click", closeModal));
 function closeModal() {
   modalBgThx.style.display = "none";
@@ -40,11 +39,6 @@ function closeModal() {
 //------------------FORM-------------------------
 // Form validation
 const form = document.getElementById("form");
-
-// prevent submit
-// form.addEventListener("submit", function(e) {
-//   e.preventDefault();
-// });
 
 // regex
 const nameRegex = new RegExp("^[A-zÀ-ú -]+$");
@@ -66,81 +60,85 @@ const inputConditionCheckbox = document.getElementById("checkbox1");
 
 // FUNCTION Test regex on input
 function testRegexOnInput(elem, regex, length, input) {
-  elem.addEventListener("change", function (e) {
-    const value = e.target.value;
-    const valueLength = e.target.value.length;
-    if (regex.test(value) && valueLength >= length) {
-      input.dataset.errorVisible = "false";
-    } else {
-      input.dataset.errorVisible = "true";
-    }
-  });
+  const value = elem.value.trim();
+  const valueLength = elem.value.length;
+  if (regex.test(value) && valueLength >= length) {
+    input.dataset.errorVisible = "false";
+    return true;
+  } else {
+    input.dataset.errorVisible = "true";
+    return false;
+  }
 }
-
-
-
-// FUNCTION Test checkbox of condition
-// function testInputCondition() {
-//   if (inputConditionCheckbox.checked) {
-//     inputCondition.dataset.errorVisible = "false";
-//   } else {
-//     inputCondition.dataset.errorVisible = "true";
-//   }
-// }
-
-// firstname, name, email, birthdate, quantity, location and checkbox of condition
-testRegexOnInput(form.first, nameRegex, 2, inputFirst);
-testRegexOnInput(form.last, nameRegex, 2, inputLast);
-testRegexOnInput(form.email, emailRegex, 2, inputEmail);
-testRegexOnInput(form.birthdate, birthdateRegex, 2, inputBirthdate);
-testRegexOnInput(form.quantity, quantityRegex, 1, inputQuantity);
-testInputLocation();
-// testInputCondition();
-
 
 // FUNCTION Test input Location
 function testInputLocation() {
-  inputLocation.dataset.errorVisible = "true";
-  console.log("toto");
+  let hasOneCheck = false;
+  inputLocation.dataset.errorVisible = "false";
   const severalLocation = document.getElementsByName("location");
-  inputLocation.addEventListener('click', function() {
-    for (var i = 0; i < severalLocation.length; i++) {
-      if (severalLocation[i].checked) {
-        inputLocation.dataset.errorVisible = "false";
-        break;
-      } else {
-        inputLocation.dataset.errorVisible = "true";
-      }
+  for (let i = 0; i < severalLocation.length; i++) {
+    if (severalLocation[i].checked) {
+      hasOneCheck = true;
     }
-  })
+  }
+  if (!hasOneCheck) {
+    inputLocation.dataset.errorVisible = "true";
+    return false;
+  }
+  return true;
 }
+
+// FUNCTION Test checkbox of condition
+function testInputCondition() {
+  if (inputConditionCheckbox.checked) {
+    inputCondition.dataset.errorVisible = "false";
+    return true;
+  } else {
+    inputCondition.dataset.errorVisible = "true";
+    return false;
+  }
+}
+
+// firstname, name, email, birthdate, quantity, location and checkbox of condition
+form.first.addEventListener("change", function (e) {
+  testRegexOnInput(form.first, nameRegex, 2, inputFirst);
+});
+form.last.addEventListener("change", function (e) {
+  testRegexOnInput(form.last, nameRegex, 2, inputLast);
+});
+form.email.addEventListener("change", function (e) {
+  testRegexOnInput(form.email, emailRegex, 2, inputEmail);
+});
+form.birthdate.addEventListener("change", function (e) {
+  testRegexOnInput(form.birthdate, birthdateRegex, 10, inputBirthdate);
+});
+form.quantity.addEventListener("change", function (e) {
+  testRegexOnInput(form.quantity, quantityRegex, 1, inputQuantity);
+});
+const severalLocation = document.getElementsByName("location");
+for (var i = 0; i < severalLocation.length; i++) {
+  severalLocation[i].addEventListener("change", function () {
+    testInputLocation();
+  });
+}
+inputConditionCheckbox.addEventListener("change", function () {
+  testInputCondition();
+});
 
 //Submit form
 form.addEventListener("submit", function (e) {
-  // if any input is empty
+  e.preventDefault();
   if (
-    form.first.value === "" ||
-    form.last.value === "" ||
-    form.email.value === "" ||
-    form.birthdate.value === "yyyy-mm-dd" ||
-    form.quantity.value === ""
+    testRegexOnInput(form.first, nameRegex, 2, inputFirst) &&
+    testRegexOnInput(form.last, nameRegex, 2, inputLast) &&
+    testRegexOnInput(form.email, emailRegex, 2, inputEmail) &&
+    testRegexOnInput(form.birthdate, birthdateRegex, 10, inputBirthdate) &&
+    testRegexOnInput(form.quantity, quantityRegex, 1, inputQuantity) &&
+    testInputLocation() &&
+    testInputCondition()
   ) {
-    alert("Vous devez remplir le formulaire pour le valider !");
-    e.preventDefault();
-  // else if condition is not checked
-  } else if (inputConditionCheckbox.checked == false) {
-    inputCondition.dataset.errorVisible = "true";
-    alert("Vous devez cocher les conditions d'utilisation !");
-    e.preventDefault();
-  // else if regex is not ok
-  } else if (
-    !nameRegex.test(form.first.value) ||
-    !nameRegex.test(form.last.value) ||
-    !emailRegex.test(form.email.value) ||
-    !birthdateRegex.test(form.birthdate.value) ||
-    !quantityRegex.test(form.quantity.value)
-  ) {
-    alert("Vérifiez le formulaire avant de le valider !");
-    e.preventDefault();
-  } 
+    modalBg.style.display = "none";
+    modalBgThx.style.display = "block";
+    form.reset();
+  }
 });
