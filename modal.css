@@ -1,4 +1,4 @@
-/* ELEMENTS DE BASE */
+/** ELEMENTS DE BASE **/
 :root {
   --font-default: "DM Sans", Arial, Helvetica, sans-serif;
   --font-slab: var(--font-default);
@@ -24,7 +24,7 @@ p {
   padding: 0.5vw;
 }
 
-/* HEADER */
+/** HEADER **/
 .header-logo > img {
   padding-right: 1rem;
 }
@@ -40,7 +40,7 @@ p {
   float: right;
 }
 
-/* NAVIGATION */
+/** NAVIGATION **/
 .topnav a{
   font-weight: 500;
   float: left;
@@ -83,7 +83,7 @@ p {
   display: none;
 }
 
-/* MAIN */
+/** MAIN **/
 main {
   font-size: 130%;
   font-weight: bolder;
@@ -138,7 +138,7 @@ main {
 }
 
 
-/* BOUTONS JE M'INSCRIS ET C'EST PARTI */
+/** BOUTONS JE M'INSCRIS ET C'EST PARTI **/
 .hero-section > .btn-signup {
   display: none;
 }
@@ -163,7 +163,7 @@ main {
   margin-top: 59px;
 }
 
-/* MODAL FORMULAIRE */
+/** MODAL FORMULAIRE **/
 .bground{
   display: none;
   position: fixed;
@@ -299,7 +299,7 @@ input {
   top: 19%;
 }
 
-/* MODAL DE REMERCIEMENTS */
+/** MODAL DE REMERCIEMENTS **/
 .bground-thanks {
   display: none;
   position: fixed;
@@ -345,7 +345,7 @@ input {
   transform: rotate(-45deg);
 }
 
-/* FOOTER */
+/** FOOTER **/
 footer {
   margin: 0 20px;
 }
@@ -357,7 +357,7 @@ footer {
   font-weight: bolder;
 }
 
-/* MOBILE RESPONSIVE */
+/** MOBILE RESPONSIVE **/
 @media screen and (max-width: 540px) {
   .header-logo > img{
     width: 103px;
@@ -442,7 +442,7 @@ footer {
   }
 }
 
-/* KEYFRAME ANIMATION */
+/** KEYFRAME ANIMATION **/
 @keyframes modalopen {
   from {
     opacity: 0;

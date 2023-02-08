@@ -1,5 +1,5 @@
 /** 
- * DOM ELEMENTS
+ ** DOM ELEMENTS
  * Icône du menu en responsive
  * Fenêtre de la modal du formulaire et de remerciements.
  * Boutons "Je m'inscris"
@@ -14,7 +14,7 @@ const closeThanks = document.querySelectorAll(".closeThanks");
 
 
 /** 
- * FONCTION
+ ** FONCTION
  * en responsive, au click, ouvre la navigation
  */
 editNavElement.addEventListener("click", function () {
@@ -27,7 +27,7 @@ editNavElement.addEventListener("click", function () {
 });
 
 /** 
- * FONCTION
+ ** FONCTION
  * ouvre le formulaire au click sur "je m'inscris"
  */
 modalBtn.forEach((btn) =>
@@ -37,7 +37,7 @@ modalBtn.forEach((btn) =>
 );
 
 /** 
- * FONCTION
+ ** FONCTION
  * ferme la modal du formulaire avec la croix
  */
 closeForm.addEventListener("click", function () {
@@ -45,7 +45,7 @@ closeForm.addEventListener("click", function () {
 });
 
 /** 
- * FONCTION
+ ** FONCTION
  * ferme la modal de remerciement avec la croix ou avec le bouton "Fermer"
  */
 closeThanks.forEach((btn) => btn.addEventListener("click", closeModal));
@@ -54,7 +54,7 @@ function closeModal() {
 }
 
 /** 
- * REGEX 
+ ** REGEX 
  * Les regex pour le nom, prénom, email, date de naissance et quantité
  */
 const nameRegex = new RegExp("^[A-zÀ-ú -]+$");
@@ -63,7 +63,7 @@ const birthdateRegex = new RegExp("^[0-9]{4}-[0-9]{2}-[0-9]{2}$");
 const quantityRegex = new RegExp("^[0-9]{1,2}$");
 
 /** 
- * DOM ELEMENTS
+ ** DOM ELEMENTS
  * inputs du prénom, nom, email, date de naissance, quantité
  * input bouton radio et les inputs contenant les différentes location
  * checkbox des conditions d'utilisation
@@ -79,7 +79,7 @@ const inputCondition = document.querySelector(".condition");
 const inputConditionCheckbox = document.getElementById("checkbox1");
 
 /** 
- * FONCTION qui teste le regex sur l'input
+ ** FONCTION qui teste le regex sur l'input
  * reprend la value de l'input puis trim (rogne les espaces vides)
  * reprend la length de la value de l'input
  * SI le test regex sur la value est true ET si la longueur de la value est supérieure ou égale à length
@@ -104,7 +104,7 @@ function testRegexOnInput(input, regex, length, div) {
 }
 
 /**
- * FONCTION qui teste l'input location et qui permet de la valider
+ ** FONCTION qui teste l'input location et qui permet de la valider
  * variable hasOneCheck de base à false
  * le errorVisible de l'input location de base à "false" (on n'affiche pas l'erreur)
  * on boucle for sur les locations
@@ -132,7 +132,7 @@ function testInputLocation() {
 }
 
 /**
- * FONCTION qui permet de valider la checkbox condition
+ ** FONCTION qui permet de valider la checkbox condition
  * @returns {boolean} 
  */
 function testInputCondition() {
@@ -146,7 +146,7 @@ function testInputCondition() {
 }
 
 /**
- * FONCTION sur chaque input du formulaire
+ ** FONCTION sur chaque input du formulaire
  * avec la fonction testRegexOnInput qui contient les paramètres utiles
  */
 form.first.addEventListener("change", function (e) {
@@ -166,8 +166,9 @@ form.quantity.addEventListener("change", function (e) {
 });
 /**
  * on boucle for sur les différentes locations
- * FONCTION qui écoute le change  
- * et FONCTION qui teste l'input location sur chacune
+ ** FONCTION qui écoute le change  
+ * et
+ ** FONCTION qui teste l'input location sur chacune
  */
 for (var i = 0; i < severalLocation.length; i++) {
   severalLocation[i].addEventListener("change", function () {
@@ -175,7 +176,7 @@ for (var i = 0; i < severalLocation.length; i++) {
   });
 }
 /**
- * FONCTION qui écoute le change sur l'input checkbox condition
+ ** FONCTION qui écoute le change sur l'input checkbox condition
  * et FONCTION qui teste l'input de la checkbox condition
  */
 inputConditionCheckbox.addEventListener("change", function () {
@@ -183,7 +184,7 @@ inputConditionCheckbox.addEventListener("change", function () {
 });
 
 /**
- * FONCTION qui écoute le submit sur le formulaitre
+ ** FONCTION qui écoute le submit sur le formulaitre
  * on empêche le comportement par défaut
  * SI toutes les FONCTIONS testRegexOnInput() + testInputLocation() + testInputCondition() return TRUE 
  * ALORS on ferme la modal du formulaire et on ouvre la modal de remerciement
