@@ -60,32 +60,32 @@
           <!-- <form id="form" name="reserve" action="index.html" method="get" onsubmit="return validate();"> -->
           <form id="form" name="reserve" action="index.html" method="get">
             <div class="formData first" data-error-visible="false"
-              data-error="Veuillez entrer 2 caractères ou plus pour le champ du prénom.">
+              data-error="Veuillez renseigner un prénom sans chiffre ni caractères spéciaux.">
               <label class="text-label" for="first">Prénom</label>
               <input class="text-control" type="text" id="first" name="first" minlength="2">
             </div>
             <div class="formData last" data-error-visible="false"
-              data-error="Veuillez entrer 2 caractères ou plus pour le champ du nom.">
+              data-error="Veuillez renseigner un nom sans chiffre ni caractères spéciaux.">
               <label class="text-label" for="last">Nom</label><br>
               <input class="text-control" type="text" id="last" name="last"><br>
             </div>
             <div class="formData email" data-error-visible="false"
-              data-error="Veuillez entrer 2 caractères ou plus pour le champ de l'email.">
+              data-error="Veuillez renseigner une adresse email valide.">
               <label class="text-label" for="email">E-mail</label><br>
               <input class="text-control" type="email" id="email" name="email"><br>
             </div>
             <div class="formData birthdate" data-error-visible="false"
-              data-error="Vous devez entrer votre date de naissance.">
+              data-error="Veuillez entrer une date de naissance valide.">
               <label class="text-label" for="birthdate">Date de naissance</label><br>
               <input class="text-control" type="date" id="birthdate" name="birthdate"><br>
             </div>
-            <div class="formData quantity" data-error-visible="false" data-error="Vous devez saisir un chiffre.">
+            <div class="formData quantity" data-error-visible="false" data-error="Veuillez saisir un chiffre entre 0 et 99.">
               <label class="text-label" for="quantity">À combien de tournois GameOn avez-vous déjà participé
                 ?</label><br>
               <input type="number" class="text-control" id="quantity" name="quantity" min="0" max="99">
             </div>
             <p class="text-label">A quel tournoi souhaitez-vous participer cette année ?</p>
-            <div class="formData location" data-error-visible="false" data-error="Vous devez choisir une option.">
+            <div class="formData location" data-error-visible="false" data-error="Veuillez choisir une option.">
               <input class="checkbox-input" type="radio" id="location1" name="location" value="New York">
               <label class="checkbox-label" for="location1">
                 <span class="checkbox-icon"></span>
